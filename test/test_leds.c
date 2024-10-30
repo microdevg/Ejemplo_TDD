@@ -3,9 +3,12 @@
 
 #include "leds.h"
 
+   uint16_t virtual_leds ;
 
 // Configuro condiciones iniciales.
 void setUp(void) {
+   virtual_leds = 0xff;
+
  
 }   
 
@@ -15,13 +18,13 @@ void tearDown(void) {
 } 
 
 
-void test_create_leds(void){
+void test_leds_create(void){
 
-    uint16_t virtual_leds = 0xff;
+    virtual_leds = 0xff;
 
     leds_create(&virtual_leds);
 
-    TEST_ASSERT_EQUAL(virtual_leds, 0x00);
+    TEST_ASSERT_EQUAL(0x00,virtual_leds);
 
 }
 
