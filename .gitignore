@@ -1,0 +1,11 @@
+.*/
+# Ignorar todo por defecto
+build/
+
+# Permitir la carpeta main
+!src/
+!test/
+# Dentro de src, permitir solo archivos .c y .h
+src/*
+!src/*.c
+!src/*.h
