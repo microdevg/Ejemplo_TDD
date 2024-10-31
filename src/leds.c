@@ -2,21 +2,27 @@
 
 
 // Macros para manipulación de bits
-#define LED_ON(virtual_leds, bit) ((*virtual_leds) |= (1 << (bit)))
-#define LED_OFF(virtual_leds, bit) ((*virtual_leds) &= ~(1 << (bit)))
+#define LED_ON(led_address, bit) ((led_address) |= (1 << (bit)))
+#define LED_OFF(led_address, bit) ((led_address) &= ~(1 << (bit)))
+
+
+
+
+static uint16_t* _port_address;
 
 
 void leds_create(uint16_t* virtual_leds){
-    (*virtual_leds) = 0x00;
+    _port_address = virtual_leds;
+    (*_port_address) = 0x00;
 }
 
 
-void leds_set_led(uint16_t* virtual_leds, uint16_t gpio_num, uint16_t value){
-  (value)? LED_ON(virtual_leds,gpio_num): 
-           LED_OFF(virtual_leds,gpio_num);
+void leds_set_led (uint16_t gpio_num, uint16_t value){
+  (value)? LED_ON(*_port_address,gpio_num): 
+           LED_OFF(*_port_address,gpio_num);
 }
 
-void leds_set_port(uint16_t* virtual_leds, uint16_t values){
-    (*virtual_leds) = values;
+void leds_set_port (uint16_t values){
+    (*_port_address) = values;
 
 }
