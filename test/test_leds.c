@@ -25,26 +25,24 @@ void test_leds_create(void){
 
 
 void test_set_on_led(){
-    uint16_t gpio_num = 7;
+    uint16_t gpio_num = 1;
     //Estado aleatorio cualquiera
-    virtual_leds = 0b0000111100001111;
+    virtual_leds = 0b0000111100001100;
     leds_set_led( gpio_num, 1);
-    TEST_ASSERT_EQUAL( (virtual_leds  | 1 << gpio_num),virtual_leds);
+    TEST_ASSERT_EQUAL( 0b0000111100001110,virtual_leds);
 }
 
 
 
 void test_set_off_led(){
-
     uint16_t gpio_num = 9;
     //Estado aleatorio cualquiera
     virtual_leds = 0b0000111100001111;
     leds_set_led( gpio_num, 0);
-    TEST_ASSERT_EQUAL( (virtual_leds) & ~(1 << (gpio_num)),virtual_leds);
+    TEST_ASSERT_EQUAL( 0b0000110100001111,virtual_leds);
 }
 
 void test_set_port(){
-
     uint16_t port_value = 0b00000000011100000;
     leds_set_port(port_value);
     TEST_ASSERT_EQUAL(port_value,virtual_leds);
