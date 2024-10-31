@@ -26,4 +26,7 @@ void leds_create(uint16_t* virtual_leds);
 void leds_set_led(uint16_t* virtual_leds, uint16_t gpio_num, uint16_t value);
 
 
+void leds_set_port(uint16_t* virtual_leds, uint16_t values);
+
+
 #endif   

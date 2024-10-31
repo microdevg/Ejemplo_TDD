@@ -15,3 +15,8 @@ void leds_set_led(uint16_t* virtual_leds, uint16_t gpio_num, uint16_t value){
   (value)? LED_ON(virtual_leds,gpio_num): 
            LED_OFF(virtual_leds,gpio_num);
 }
+
+void leds_set_port(uint16_t* virtual_leds, uint16_t values){
+    (*virtual_leds) = values;
+
+}
