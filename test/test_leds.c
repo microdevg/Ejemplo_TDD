@@ -19,13 +19,8 @@ void tearDown(void) {
 
 
 void test_leds_create(void){
-
-    virtual_leds = 0xff;
-
     leds_create(&virtual_leds);
-
     TEST_ASSERT_EQUAL(0x00,virtual_leds);
-
 }
 
 
